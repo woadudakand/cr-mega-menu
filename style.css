@@ -97,6 +97,7 @@
 	opacity: 1;
 	z-index: 1;
 	width: 100vw;
+	padding: 0;
 }
 
 .cr-m-menu{
@@ -116,7 +117,7 @@
 .cr-navbar ul li.cr-link .cr-mega.cr-active{
 	display: flex;
     z-index: 1;
-    padding: 0px 15px;
+    padding: 0px 0px;
     width: 100vw;
 }
 .cr-navbar ul li.cr-link .cr-mega ul{	
@@ -126,8 +127,7 @@
     width: 250px;
 }
 .cr-navbar ul li.cr-link .cr-mega.cr-active ul{
-    width: 100vw !important;
-    padding: 0px 15px;  
+    width: 100vw !important;     
 }
 .cr-navbar ul li.cr-link .cr-mega ul li{
 	display: block;
@@ -202,5 +202,9 @@
 	}
 	.cr-m-menu img {
 		width: 30px;
+	}
+
+	.cr-navbar .cr-nav-item .cr-mega ul{
+		position: static !important;
 	}
 }

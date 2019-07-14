@@ -15,15 +15,19 @@
 				element.append(img);
 
 				element.addEventListener('click', (e) => {
-					
+
 					e.target.nextElementSibling.classList.toggle('cr-active');
+					if(e.target.closest('li').querySelector('.cr-menu')){
+						var height = e.target.closest('li').querySelector('.cr-menu').offsetHeight;
+						e.target.closest('li').style.marginBottom = height +'px';
+					}
 					var icon = e.target.closest('li').querySelector('.cr-icon');
 					if(e.target.nextElementSibling.classList.contains('cr-active')){						
 						icon.setAttribute('src', 'img/minus.png');
+						icon.classList.add('minus');
 					} else {
 						icon.setAttribute('src', 'img/plus.png');
 					}
-
 				})				
 
 			}
