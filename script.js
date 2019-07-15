@@ -16,18 +16,52 @@
 
 				element.addEventListener('click', (e) => {
 
-					e.target.nextElementSibling.classList.toggle('cr-active');
-					if(e.target.closest('li').querySelector('.cr-menu')){
-						var height = e.target.closest('li').querySelector('.cr-menu').offsetHeight;
-						e.target.closest('li').style.marginBottom = height +'px';
-					}
+
+
+					
+					link.forEach((el2, ind) => {
+						el2.style.marginBottom = '0px';
+
+						el2.querySelectorAll('.cr-mega').forEach((mega, ind2) => {
+							mega.classList.remove('cr-active')
+						})
+						el2.querySelectorAll('.cr-menu').forEach((mega, ind2) => {
+							mega.classList.remove('cr-active')
+						})
+						el2.querySelectorAll('.cr-icon').forEach((mega, ind2) => {
+							mega.setAttribute('src', 'img/plus.png');
+						})
+					})
+
+
+						element.querySelector('a').nextElementSibling.classList.toggle('cr-active');
+
+					
+						var height = 0;
+
+						if(element.querySelector('.cr-menu')){
+							height = element.querySelector('.cr-menu').offsetHeight;
+						} else if (element.querySelector('.cr-mega')) {
+							height = element.querySelector('.cr-mega').offsetHeight;
+						} else {
+							height = 0;
+						}
+
+						element.style.marginBottom = height +'px';
+
+
+
+					
 					var icon = e.target.closest('li').querySelector('.cr-icon');
-					if(e.target.nextElementSibling.classList.contains('cr-active')){						
+					if(element.querySelector('a').nextElementSibling.classList.contains('cr-active')){						
 						icon.setAttribute('src', 'img/minus.png');
 						icon.classList.add('minus');
 					} else {
 						icon.setAttribute('src', 'img/plus.png');
 					}
+
+
+
 				})				
 
 			}
