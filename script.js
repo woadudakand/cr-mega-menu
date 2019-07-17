@@ -13,7 +13,7 @@
 			
 			var img = document.createElement('IMG'); // img create for link icon
 
-				img.setAttribute('src', 'img/plus.png'); // icon img	
+				img.setAttribute('src', 'img/down.svg'); // icon img	
 				img.setAttribute('class', 'cr-icon');	//icon class
 				element.append(img); // img append
 
@@ -30,7 +30,7 @@
 							mega.classList.remove('cr-active')
 						})
 						el2.querySelectorAll('.cr-icon').forEach((mega, ind2) => {
-							mega.setAttribute('src', 'img/plus.png');
+							mega.setAttribute('src', 'img/down.svg');
 						})
 					})
 					// sub menu and mega menu collapse end
@@ -56,10 +56,10 @@
 					// icon change here on click
 					var icon = e.target.closest('li').querySelector('.cr-icon');					
 					if(element.querySelector('a').nextElementSibling.classList.contains('cr-active')){						
-						icon.setAttribute('src', 'img/minus.png');
+						icon.setAttribute('src', 'img/right.svg');
 						icon.classList.add('minus');
 					} else {
-						icon.setAttribute('src', 'img/plus.png');
+						icon.setAttribute('src', 'img/down.svg');
 					}
 					// icon change here on click
 				});				
