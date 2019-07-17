@@ -13,17 +13,23 @@
 </head>
 <body>
 	
+	<!-- cr-nabar for navbar -->
 	<nav class="cr-navbar">
-
-		<div class="cr-container">
+		<!-- cr-container for 80 % content width, you can also use cr-container-fluid for 95 % -->
+		<div class="cr-container">			
 			<div class="cr-row">
+				<!-- cr-brand for Logo or brand image / text -->
 				<div class="cr-brand">
 					<a href="#"><img src="img/logo.svg" alt=""></a>
 					<button class='cr-m-menu'><img src="img/menu.png" alt=""></button>
-				</div>				
+				</div>	
+				
+				<!-- nav item for parent ul and cr-right for ul move right side on navbar -->
 				<ul class='cr-right cr-nav-item'>
+					<!-- cr-link for menu item  -->
 					<li class="cr-link"><a href="#">Item-1</a></li>
 					<li class="cr-link"><a href="#">Item-2</a>
+						<!-- cr-menue for submenu -->
 						<ul class='cr-menu'>
 							<li><a href="#">Submenu-1</a></li>
 							<li><a href="#">Submenu-2</a></li>
@@ -32,6 +38,7 @@
 					</li>
 					<li class="cr-link"><a href="#">Item-3</a></li>
 					<li class="cr-link"><a href="#">Item-4</a>
+						<!-- cr-mega for mega menu -->
 						<div class="cr-mega">
 							<ul>
 								<li><a href="#">Megamenu-1</a></li>
@@ -71,6 +78,7 @@
 								<li><a href="#">Megamenu-1</a></li>
 								<li><a href="#">Megamenu-1</a></li>
 							</ul>
+							<!-- style is custom css wich you difine -->
 							<div class='style'>
 								<img src="img/logo.svg" alt="">
 							</div>
@@ -92,10 +100,8 @@
 					</li>
 				</ul>
 			</div>				
-		</div>
-		
+		</div>		
 	</nav>
-
 
 	<script src="script.js"></script>
 </body>
