@@ -72,12 +72,10 @@
 						// icon animation start 
 						icon.style.transform = "rotate(-180deg)";
 						icon.style.transition = ".5s";
-						icon.classList.add('minus');
-						
+						icon.classList.add('minus');						
 
 					} else {
-						// icon animation reset 
-						
+						// icon animation reset 						
 						icon.style.transform = "rotate(0deg)";
 						icon.style.transition = ".5s";
 					}
@@ -107,9 +105,16 @@
 	btn.addEventListener('click', (e) =>{
 		e.preventDefault();
 		count ++;
-		nav.classList.toggle('cr-active');
+		// nav.classList.toggle('cr-active');
 
 		if(count %2 === 1){
+			nav.classList.add('cr-active');
+			setTimeout(() => {				
+				nav.style.top = '100%';
+				nav.style.opacity = '1';
+				nav.style.transition = '.3s';
+			}, 100);
+
 			document.querySelector(".one").style.transform = "rotate(45deg)";
 			document.querySelector(".one").style.transformOrigin= "20% 40%";
 			document.querySelector(".one").style.transition = ".5s";
@@ -120,7 +125,14 @@
 			document.querySelector(".two").style.visibility  = "hidden";
 			document.querySelector(".two").style.transition = "0";
 
-		} else {
+		} else {				
+				nav.style.top = '150%';
+				nav.style.opacity = '0';
+				nav.style.transition = '.3s';
+
+			setTimeout(() => {
+				nav.classList.remove('cr-active');
+			}, 300);
 			document.querySelector(".one").style.transform = "rotate(0deg)";
 			document.querySelector(".one").style.transformOrigin= "0% 0%";
 			document.querySelector(".one").style.transition = ".5s";
@@ -138,16 +150,69 @@
 	// mobile menue end here
 
 	// mega menu in desktop
+
+	// menu animation 
+	link.forEach( function(element, index) {
+
+		element.addEventListener('mouseenter', (e) => {
+			var li = e.target;
+			var mega = li.querySelector('.cr-mega');
+			var menu = li.querySelector('.cr-menu');
+
+			if (mega) {
+				setTimeout(() => {
+					mega.style.top = '100%';
+					mega.style.opacity = '1';
+					mega.style.transition = '.3';
+				}, 100)
+			}
+
+			if (menu) {
+				setTimeout(() => {
+					menu.style.top = '100%';
+					menu.style.opacity = '1';
+					menu.style.transition = '.3';
+				}, 100)
+			}
+
+		});
+		// menu animation 
+
+		element.addEventListener('mouseleave', (e) => {
+			var li = e.target;
+			var mega = li.querySelector('.cr-mega');
+			var menu = li.querySelector('.cr-menu');
+
+			if (mega) {
+				setTimeout(() => {
+					mega.style.top = '140%';
+					mega.style.opacity = '0';
+					mega.style.transition = '.3';
+				}, 100);
+			}
+
+			if (menu) {
+				setTimeout(() => {
+					menu.style.top = '140%';
+					menu.style.opacity = '0';
+					menu.style.transition = '.3';
+				}, 100)
+			}
+		})
+	})
+
 	link.forEach( function(element, index) {
 
 		if(element.closest('.cr-right')){ // mega menu size controle when menu stay right on the bar
 			element.addEventListener('mouseenter', (e) => {
 				var li = e.target;
-				var marginSize = 0;
-				
+				var marginSize = 0;				
 				marginSize = li.querySelector('.cr-mega');
-				if (marginSize){				
-					mega.forEach( function(element, index) {
+				
+
+				if (marginSize){					
+
+					mega.forEach( function(element, index) {						
 						element.style.marginLeft = -marginSize.offsetWidth+'px';
 
 						if(window.innerWidth < 1105) {
