@@ -40,7 +40,7 @@
 /* navbar style */
 .cr-navbar {
     display: block;
-    height: 70px;
+    height: 55px;
     background: #000; 
 }
 /* navbar brand */
@@ -106,10 +106,15 @@
 
 .cr-m-menu {
 	display: none;
-	background: #fff;
+	background: none;
 	border: none;
-	padding: 5px;
+	border: 1px solid #888;
+	padding: 8px;
 	border-radius: 5px;
+	outline: none;
+	width: 40px;
+	height: 40px;
+	/* padding-left: 10px; */
 }
 
 .cr-navbar ul li.cr-link .cr-mega{
@@ -160,7 +165,7 @@
 	right: 10px;
 	top: 50%;
 	margin-top: -8px;
-	background: #fff;
+	/* background: #fff; */
 	padding: 2px;
 	border-radius: 2px;
 }

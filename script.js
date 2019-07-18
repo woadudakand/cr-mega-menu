@@ -1,5 +1,6 @@
 (function (){
 
+	
 	// global variable
 	var link = document.querySelectorAll('.cr-link');
 	var mega = document.querySelectorAll('.cr-mega');
@@ -8,7 +9,10 @@
 	// mobile menue start here
 	if(window.innerWidth < 600){
 
-		link.forEach( function(element, index) {
+		
+		link.forEach( function(element, index) {				
+				var count = 0;
+
 			if(element.querySelector('.cr-menu') || element.querySelector('.cr-mega')) {
 			
 			var img = document.createElement('IMG'); // img create for link icon
@@ -16,10 +20,10 @@
 				img.setAttribute('src', 'img/down.svg'); // icon img	
 				img.setAttribute('class', 'cr-icon');	//icon class
 				element.append(img); // img append
-
-
 				element.addEventListener('click', (e) => { // click on mobile link item
-				
+					count ++;
+					element.setAttribute('count', count);
+					
 					// submenu and mega menu collapse start
 					link.forEach((el2, ind) => {						
 						el2.style.marginBottom = '0px';
@@ -30,7 +34,10 @@
 							mega.classList.remove('cr-active')
 						})
 						el2.querySelectorAll('.cr-icon').forEach((mega, ind2) => {
-							mega.setAttribute('src', 'img/down.svg');
+							// icon animation reset
+							mega.style.transform = "rotate(0deg)";
+							mega.style.transition = ".5s";
+
 						})
 					})
 					// sub menu and mega menu collapse end
@@ -38,6 +45,12 @@
 					// sub menu and mega menu add here
 					let a = element.querySelector('a');
 						a.nextElementSibling.classList.add('cr-active');					
+
+						if(count %2 == 0) {
+							a.nextElementSibling.classList.remove('cr-active');													
+						} 
+						
+					
 					// sub menu and mega menu add here
 				
 					// get submenu and megamenu height
@@ -56,10 +69,17 @@
 					// icon change here on click
 					var icon = e.target.closest('li').querySelector('.cr-icon');					
 					if(element.querySelector('a').nextElementSibling.classList.contains('cr-active')){						
-						icon.setAttribute('src', 'img/right.svg');
+						// icon animation start 
+						icon.style.transform = "rotate(-180deg)";
+						icon.style.transition = ".5s";
 						icon.classList.add('minus');
+						
+
 					} else {
-						icon.setAttribute('src', 'img/down.svg');
+						// icon animation reset 
+						
+						icon.style.transform = "rotate(0deg)";
+						icon.style.transition = ".5s";
 					}
 					// icon change here on click
 				});				
@@ -68,12 +88,49 @@
 		});
 	}
 
+
+
+
 	// main menu toggle
+	var count = 0;
 	var btn = document.querySelector('.cr-m-menu');
 	var nav = document.querySelector('.cr-nav-item');
+
+	// icon style 
+	const cr_btn = `<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+					 viewBox="0 0 64 64" style="enable-background:new 0 0 64 64; width: 100%; height: 100%" xml:space="preserve">
+					<rect class="one" y="10" fill ="#fff" width="60" height="4"/>
+					<rect class="two" y="30" fill ="#fff" width="60" height="4"/>
+					<rect class="three" y="50" fill ="#fff" width="60" height="4"/>
+				</svg>`;
+		btn.innerHTML = cr_btn;
 	btn.addEventListener('click', (e) =>{
 		e.preventDefault();
+		count ++;
 		nav.classList.toggle('cr-active');
+
+		if(count %2 === 1){
+			document.querySelector(".one").style.transform = "rotate(45deg)";
+			document.querySelector(".one").style.transformOrigin= "20% 40%";
+			document.querySelector(".one").style.transition = ".5s";
+
+			document.querySelector(".three").style.transform = "rotate(-45deg)";
+			document.querySelector(".three").style.transformOrigin= "10% 51%";
+			document.querySelector(".three").style.transition = ".5s";
+			document.querySelector(".two").style.visibility  = "hidden";
+			document.querySelector(".two").style.transition = "0";
+
+		} else {
+			document.querySelector(".one").style.transform = "rotate(0deg)";
+			document.querySelector(".one").style.transformOrigin= "0% 0%";
+			document.querySelector(".one").style.transition = ".5s";
+
+			document.querySelector(".three").style.transform = "rotate(0deg)";
+			document.querySelector(".three").style.transformOrigin= "0% 0%";
+			document.querySelector(".three").style.transition = ".5s";
+			document.querySelector(".two").style.visibility  = "visible";
+			document.querySelector(".two").style.transition = "0";
+		}
 
 	});
 	// main menu toggle
